@@ -2,10 +2,11 @@
 #include "portmacro.h"
 #include "semphr.h"
 #include "task.h"
+#include "lock.h"
+
 #include <stdlib.h>
 #include <sys/lock.h>
 
-typedef long _lock_t;
 static void lock_init_generic(_lock_t *lock, uint8_t mutex_type)
 {
     portENTER_CRITICAL();
@@ -53,7 +54,9 @@ void _lock_close(_lock_t *lock)
     portEXIT_CRITICAL();
 }
 
-void _lock_close_recursive(_lock_t *lock) __attribute__((alias("_lock_close")));
+void _lock_close_recursive(_lock_t* lock){
+	_lock_close(lock);
+}
 
 static int lock_acquire_generic(_lock_t *lock, uint32_t delay, uint8_t mutex_type)
 {

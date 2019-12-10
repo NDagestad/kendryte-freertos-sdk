@@ -18,6 +18,7 @@
 #include <sys/lock.h>
 #include "FreeRTOS.h"
 #include "task.h"
+#include "lock.h"
 
 typedef struct _iomem_malloc_t
 {

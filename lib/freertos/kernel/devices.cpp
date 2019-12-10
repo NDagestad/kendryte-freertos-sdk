@@ -18,6 +18,8 @@
 #include "filesystem.h"
 #include "hal.h"
 #include "kernel/driver.hpp"
+#include "lock.h"
+
 #include <atomic.h>
 #include <plic.h>
 #include <semphr.h>
